@@ -6,7 +6,7 @@ import time
 import socket
 
 
-__version__ = '0.1.1'
+__version__ = '0.1.2'
 
 
 def connect_to_target():

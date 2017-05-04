@@ -21,7 +21,7 @@ if sys.argv[-1] == 'publish':
     print("  git tag -a %s -m 'version %s'" % (version, version))
     print("  git push --tags")
     sys.exit()
-    
+
 if sys.argv[-1] == 'tag':
     print("Tagging the version on github:")
     os.system("git tag -a %s -m 'version %s'" % (version, version))
@@ -66,11 +66,9 @@ setup(
         'Programming Language :: Python :: 3.3',
         'Programming Language :: Python :: 3.4',
     ],
-
     entry_points={
         'console_scripts': [
             'reshell = reshell:main',
         ]
     },
-
 )

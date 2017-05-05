@@ -33,6 +33,9 @@ On destination host launch reverse shell:
     $ export RESHELL_TARGET=127.0.0.1:12345
     $ reshell
 
+``reshell`` will try to connect to it's target every 10 seconds for 10 minutes.
+After 10 minutes it will exit.
+
 Terminology
 -----------
 

@@ -74,11 +74,10 @@ Background (use case)
 Imagine *crazy* environment.
 You can deploy Python application to *cloudy* remote host and have it running.
 But you don't have SSH access and can't debug it or see startup logs.
-Of course, application it doesn't work.
 Also you don't know in advance what will be network address of the remote host.
 
 But you have a dev machine in the same network, where you are free to run anything:
 1. So you launch server on dev machine and deploy reverse shell through regular deployment process.
 2. Once the application is deployed, it will connect to the server and turn itself into bash.
 3. ... You can poke around and figure out what's wrong ...
-4. PROFIT! 
+4. PROFIT!

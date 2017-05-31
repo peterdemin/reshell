@@ -26,12 +26,23 @@ On destination host launch reverse shell:
 
     $ reshell 127.0.0.1:12345
 
-(or with env variable instead of argument)
+(or with env variable instead of argument):
 
 .. code:: bash
 
     $ export RESHELL_TARGET=127.0.0.1:12345
     $ reshell
+
+TeamCity Command Line Build Step:
+
+.. code:: bash
+
+    virtualenv .env
+    . .env/bin/activate
+    pip install reshell
+    reshell
+
+Make sure you add ``env.RESHELL_TARGET`` to Build Parameters.
 
 ``reshell`` will try to connect to it's target every 10 seconds for 10 minutes.
 After 10 minutes it will exit.

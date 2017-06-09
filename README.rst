@@ -92,3 +92,36 @@ But you have a dev machine in the same network, where you are free to run anythi
 2. Once the application is deployed, it will connect to the server and turn itself into bash.
 3. ... You can poke around and figure out what's wrong ...
 4. PROFIT!
+
+Bonus (Pro tips)
+----------------
+
+``nc`` is not the most convinient shell, you would want to use in day job.
+You won't have access to shortcuts, such as up arrow, or Ctrl-P for previous command.
+It doesn't expand tabs in-place, but does it after command is sent.
+For example you could write:
+
+.. code:: console
+
+    $ ls /us<TAB>loc<TAB>li
+    ls /usr/local/lib
+
+Special caution should be taken when dealing with Keyboard Interrupt.
+If you press ``Ctrl+C`` inside ``nc`` session, it will be caught by ``nc`` process
+itself and though will not be sent to remote machine.
+Instead you can place a signal trap for SIGINT before launching ``nc``:
+
+.. code:: console
+
+    $ trap '' INT
+    $ nc -lvp 12345
+
+To send ``Ctrl+C`` to remote machine (to iterrupt current process)
+you can use combination ``Ctrl+V Ctrl+C Return``. ``Ctrl+V`` says bash to send following symbol as-is,
+without processing it. ``Return`` is needed to actually send ``^C`` command.
+
+When finished, terminate remote session with:
+
+.. code:: console
+
+    $ exit

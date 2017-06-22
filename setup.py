@@ -13,7 +13,7 @@ version = "1.0.1"
 
 if sys.argv[-1] == 'publish':
     try:
-        import wheel
+        import wheel  # noqa
     except ImportError:
         raise ImportError("Fix: pip install wheel")
     os.system('python setup.py sdist bdist_wheel upload')
@@ -31,15 +31,6 @@ if sys.argv[-1] == 'tag':
 readme = open('README.rst').read()
 history = open('HISTORY.rst').read().replace('.. :changelog:', '')
 
-def get_requirements(filename):
-    f = open(filename).read()
-    reqs = [
-            # loop through list of requirements
-            x.strip() for x in f.splitlines()
-                # filter out comments and empty lines
-                if not x.strip().startswith('#')
-            ]
-    return reqs
 
 setup(
     name='reshell',
@@ -51,7 +42,7 @@ setup(
     url='https://github.com/peterdemin/reshell',
     include_package_data=True,
     py_modules=['reshell'],
-    install_requires=get_requirements('requirements.txt'),
+    install_requires=[],
     license="BSD",
     zip_safe=False,
     keywords='reshell',

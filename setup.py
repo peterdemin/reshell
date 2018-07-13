@@ -9,7 +9,7 @@ try:
 except ImportError:
     from distutils.core import setup
 
-version = "1.0.2"
+version = "1.0.3"
 
 if sys.argv[-1] == 'publish':
     try:
@@ -47,7 +47,7 @@ setup(
     zip_safe=False,
     keywords='reshell',
     classifiers=[
-        'Development Status :: 2 - Pre-Alpha',
+        'Development Status :: 6 - Mature',
         'Intended Audience :: Developers',
         'License :: OSI Approved :: BSD License',
         'Natural Language :: English',

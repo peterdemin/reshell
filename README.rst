@@ -47,6 +47,16 @@ Make sure you add ``env.RESHELL_TARGET`` to Build Parameters.
 ``reshell`` will try to connect to it's target every 10 seconds for 10 minutes.
 After 10 minutes it will exit.
 
+Start from Python
+-----------------
+
+Start reshell in a background daemon process:
+
+.. code:: python
+
+    from reshell import start_daemon
+    start_daemon('127.0.0.1:12345')
+
 Terminology
 -----------
 

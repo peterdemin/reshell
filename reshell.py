@@ -8,7 +8,7 @@ import socket
 from multiprocessing import Process
 
 
-__version__ = '1.1.0'
+__version__ = '1.1.1'
 
 
 def start_daemon(target):
